@@ -1,0 +1,128 @@
+2021-07-09 10:08:43.175 | INFO     | shortener.views:shorten_url_view:44 - URL http://127.0.0.1:8000/ was successfully saved with code 964KXM64dRjT
+2021-07-09 10:08:43.176 | INFO     | shortener.services:add_urls_in_user_session:27 - http://127.0.0.1:8000/964KXM64dRjT saved in session for http://127.0.0.1:8000/
+2021-07-09 10:10:47.832 | INFO     | shortener.views:shorten_url_view:52 - <ul class="errorlist"><li>Url with this Unique code already exists.</li></ul>
+2021-07-09 10:10:51.244 | INFO     | shortener.views:shorten_url_view:44 - URL http://127.0.0.1:8000/urls/ was successfully saved with code GwT4YTQefgUl
+2021-07-09 10:10:51.246 | INFO     | shortener.services:add_urls_in_user_session:27 - Shortened URL http://127.0.0.1:8000/GwT4YTQefgUl saved in session for http://127.0.0.1:8000/urls/
+2021-07-09 10:12:17.149 | INFO     | shortener.views:shorten_url_view:44 - URL http://127.0.0.1:8000/urls/ was successfully saved with code EjR2wQ0aTt1U
+2021-07-09 10:12:17.150 | INFO     | shortener.services:add_urls_in_user_session:27 - Shortened URL http://127.0.0.1:8000/EjR2wQ0aTt1U saved in session for http://127.0.0.1:8000/urls/
+2021-07-09 10:12:24.777 | INFO     | shortener.views:shorten_url_view:44 - URL https://www.youtube.com/watch?v=LPo29ygf0wA was successfully saved with code ASDADASADS
+2021-07-09 10:12:24.779 | INFO     | shortener.services:add_urls_in_user_session:27 - Shortened URL http://127.0.0.1:8000/ASDADASADS saved in session for https://www.youtube.com/watch?v=LPo29ygf0wA
+2021-07-09 10:12:34.636 | INFO     | shortener.views:shorten_url_view:53 - <ul class="errorlist"><li>Url with this Unique code already exists.</li></ul>
+2021-07-09 10:14:01.124 | INFO     | shortener.views:shorten_url_view:44 - URL http://127.0.0.1:8000/ was successfully saved with code AAAA
+2021-07-09 10:14:01.125 | INFO     | shortener.services:add_urls_in_user_session:27 - Shortened URL http://127.0.0.1:8000/AAAA saved in session for http://127.0.0.1:8000/
+2021-07-09 10:14:03.162 | INFO     | shortener.views:shorten_url_view:54 - <ul class="errorlist"><li>Url with this Unique code already exists.</li></ul>
+2021-07-09 10:16:52.685 | INFO     | shortener.views:shorten_url_view:44 - URL https://github.com/ysomad/url-shortener was successfully saved with code NZALwiKdl38i
+2021-07-09 10:16:52.686 | INFO     | shortener.services:add_urls_in_user_session:27 - Shortened URL http://127.0.0.1:8000/NZALwiKdl38i saved in session for https://github.com/ysomad/url-shortener
+2021-07-09 10:16:54.189 | INFO     | shortener.views:shorten_url_view:44 - URL https://github.com/ysomad/url-shortener was successfully saved with code flXM28F6Dsfu
+2021-07-09 10:16:54.191 | INFO     | shortener.services:add_urls_in_user_session:27 - Shortened URL http://127.0.0.1:8000/flXM28F6Dsfu saved in session for https://github.com/ysomad/url-shortener
+2021-07-09 10:16:57.301 | INFO     | shortener.views:shorten_url_view:53 - Validation error in code with [{'message': 'Url with this Unique code already exists.', 'code': 'unique'}]
+2021-07-09 10:19:01.762 | INFO     | shortener.views:shorten_url_view:44 - URL http://127.0.0.1:8000/ was successfully saved with code EAxozVGbA0kY
+2021-07-09 10:19:01.763 | INFO     | shortener.services:add_urls_in_user_session:27 - Shortened URL http://127.0.0.1:8000/EAxozVGbA0kY saved in session for http://127.0.0.1:8000/
+2021-07-09 10:19:02.865 | INFO     | shortener.views:shorten_url_view:54 - Validation error in field code with Url with this Unique code already exists.
+2021-07-09 10:20:22.443 | INFO     | shortener.views:shorten_url_view:44 - URL http://127.0.0.1:8000/ was successfully saved with code 7eb0zJwUWFMd
+2021-07-09 10:20:22.444 | INFO     | shortener.services:add_urls_in_user_session:27 - Shortened URL http://127.0.0.1:8000/7eb0zJwUWFMd saved in session for http://127.0.0.1:8000/
+2021-07-09 10:20:23.929 | INFO     | shortener.views:shorten_url_view:44 - URL http://127.0.0.1:8000/ was successfully saved with code IbYcaBTmc4tg
+2021-07-09 10:20:23.930 | INFO     | shortener.services:add_urls_in_user_session:27 - Shortened URL http://127.0.0.1:8000/IbYcaBTmc4tg saved in session for http://127.0.0.1:8000/
+2021-07-09 10:20:25.391 | INFO     | shortener.views:shorten_url_view:54 - Validation error in field "code"                 with message "Url with this Unique code already exists."
+2021-07-09 10:22:16.494 | INFO     | shortener.views:shorten_url_view:44 - URL http://127.0.0.1:8000/ was successfully saved with code 20bwrql6ALTz
+2021-07-09 10:22:16.495 | INFO     | shortener.services:add_urls_in_user_session:27 - Shortened URL http://127.0.0.1:8000/20bwrql6ALTz saved in session for http://127.0.0.1:8000/
+2021-07-09 10:22:17.461 | INFO     | shortener.views:shorten_url_view:44 - URL http://127.0.0.1:8000/ was successfully saved with code u9HrF1DtO2PV
+2021-07-09 10:22:17.463 | INFO     | shortener.services:add_urls_in_user_session:27 - Shortened URL http://127.0.0.1:8000/u9HrF1DtO2PV saved in session for http://127.0.0.1:8000/
+2021-07-09 10:22:18.461 | INFO     | shortener.views:shorten_url_view:54 - Validation error in field "code"with message "{cleaned_message}"
+2021-07-09 10:22:41.728 | INFO     | shortener.views:shorten_url_view:44 - URL http://127.0.0.1:8000/ was successfully saved with code PvtNRx3wqjJj
+2021-07-09 10:22:41.729 | INFO     | shortener.services:add_urls_in_user_session:27 - Shortened URL http://127.0.0.1:8000/PvtNRx3wqjJj saved in session for http://127.0.0.1:8000/
+2021-07-09 10:22:43.530 | INFO     | shortener.views:shorten_url_view:44 - URL http://127.0.0.1:8000/ was successfully saved with code pWrdOBB6XNzD
+2021-07-09 10:22:43.532 | INFO     | shortener.services:add_urls_in_user_session:27 - Shortened URL http://127.0.0.1:8000/pWrdOBB6XNzD saved in session for http://127.0.0.1:8000/
+2021-07-09 10:22:44.855 | INFO     | shortener.views:shorten_url_view:54 - Validation error in field "code"with message "Url with this Unique code already exists."
+2021-07-09 10:39:29.985 | INFO     | shortener.views:shorten_url_view:45 - URL http://127.0.0.1:8000/ was successfully saved with code LGpMnN1ylw4M
+2021-07-09 10:39:29.986 | INFO     | shortener.services:add_urls_in_user_session:30 - Shortened URL http://127.0.0.1:8000/LGpMnN1ylw4M saved in session for http://127.0.0.1:8000/
+2021-07-09 10:42:53.821 | INFO     | shortener.views:shorten_url_view:45 - URL http://127.0.0.1:8000/ was successfully saved with code bLWlyODGtyi5
+2021-07-09 10:42:53.823 | INFO     | shortener.services:add_urls_in_user_session:30 - Shortened URL http://127.0.0.1:8000/bLWlyODGtyi5 saved in session for http://127.0.0.1:8000/
+2021-07-09 10:42:59.359 | INFO     | shortener.services:add_url_form_error_messages_to_message_storage:41 - Validation error in field "code"with message "Url with this Unique code already exists."
+2021-07-09 10:55:39.019 | INFO     | shortener.views:url_list_view:29 - No shortened URLs found in current user session
+2021-07-09 10:56:31.958 | INFO     | shortener.views:shorten_url_view:45 - URL http://127.0.0.1:8000/ was successfully saved with code HIoexuHU2v4W
+2021-07-09 10:56:31.959 | INFO     | shortener.services:add_urls_in_user_session:30 - Shortened URL http://127.0.0.1:8000/HIoexuHU2v4W saved in session for http://127.0.0.1:8000/
+2021-07-09 10:58:22.802 | INFO     | shortener.views:shorten_url_view:45 - URL http://127.0.0.1:8000/ was successfully saved with code pzn9PFSuTFx2
+2021-07-09 10:58:22.803 | INFO     | shortener.services:add_urls_in_user_session:30 - Shortened URL http://127.0.0.1:8000/pzn9PFSuTFx2 saved in session for http://127.0.0.1:8000/
+2021-07-09 10:58:24.720 | INFO     | shortener.services:add_url_form_error_messages_to_message_storage:41 - Validation error in field "code"with message "Url with this Unique code already exists."
+2021-07-09 10:59:41.770 | INFO     | shortener.views:shorten_url_view:45 - URL http://127.0.0.1:8000/ was successfully saved with code O4EgHeuw4yBW
+2021-07-09 10:59:41.772 | INFO     | shortener.services:add_urls_in_user_session:30 - Shortened URL http://127.0.0.1:8000/O4EgHeuw4yBW saved in session for http://127.0.0.1:8000/
+2021-07-09 10:59:42.800 | INFO     | shortener.services:add_url_form_error_messages_to_message_storage:41 - Validation error in field "code"with message "Url with this Unique code already exists."
+2021-07-09 11:01:17.969 | INFO     | shortener.views:shorten_url_view:45 - URL http://127.0.0.1:8000/ was successfully saved with code F26oaENLtH89
+2021-07-09 11:01:17.971 | INFO     | shortener.services:add_urls_in_user_session:30 - Shortened URL http://127.0.0.1:8000/F26oaENLtH89 saved in session for http://127.0.0.1:8000/
+2021-07-09 11:01:18.796 | INFO     | shortener.services:add_url_form_error_messages_to_message_storage:41 - Validation error in field "code"with message "Url with this Unique code already exists."
+2021-07-09 11:02:06.265 | INFO     | shortener.views:shorten_url_view:45 - URL http://127.0.0.1:8000/ was successfully saved with code YZzTnGxWhZ8k
+2021-07-09 11:02:06.267 | INFO     | shortener.services:add_urls_in_user_session:30 - Shortened URL http://127.0.0.1:8000/YZzTnGxWhZ8k saved in session for http://127.0.0.1:8000/
+2021-07-09 11:02:07.076 | INFO     | shortener.services:add_url_form_error_messages_to_message_storage:41 - Validation error in field "code"with message "Url with this Unique code already exists."
+2021-07-09 11:02:20.600 | INFO     | shortener.views:shorten_url_view:45 - URL http://127.0.0.1:8000/ was successfully saved with code FNNnImhB6m4R
+2021-07-09 11:02:20.602 | INFO     | shortener.services:add_urls_in_user_session:30 - Shortened URL http://127.0.0.1:8000/FNNnImhB6m4R saved in session for http://127.0.0.1:8000/
+2021-07-09 11:02:21.614 | INFO     | shortener.services:add_url_form_error_messages_to_message_storage:41 - Validation error in field "code"with message "Url with this Unique code already exists."
+2021-07-09 11:04:49.656 | INFO     | shortener.views:shorten_url_view:45 - URL http://127.0.0.1:8000/ was successfully saved with code rBYJ7xL2sbGD
+2021-07-09 11:04:49.658 | INFO     | shortener.services:add_urls_in_user_session:30 - Shortened URL http://127.0.0.1:8000/rBYJ7xL2sbGD saved in session for http://127.0.0.1:8000/
+2021-07-09 11:04:51.241 | INFO     | shortener.services:add_url_form_error_messages_to_message_storage:41 - Validation error in field "code"with message "Url with this Unique code already exists."
+2021-07-09 11:17:51.328 | INFO     | shortener.views:redirect_view:63 - URL with given unique code does not exist
+2021-07-09 11:17:52.986 | INFO     | shortener.views:redirect_view:63 - URL with given unique code does not exist
+2021-07-09 12:31:58.107 | INFO     | shortener.services:add_urls_in_user_session:30 - Shortened URL http://127.0.0.1:8000/8pFRFPT3oqlN saved in session for https://stackoverflow.com/questions/17126983/add-data-to-modelform-object-before-saving
+2021-07-09 12:37:15.457 | INFO     | shortener.services:add_urls_in_user_session:30 - Shortened URL http://127.0.0.1:8000/5PahBT14pEYI saved in session for https://stackoverflow.com/questions/17126983/add-data-to-modelform-object-before-saving
+2021-07-09 12:37:18.021 | INFO     | shortener.views:redirect_view:63 - URL with given unique code does not exist
+2021-07-09 12:38:17.299 | INFO     | shortener.services:add_urls_in_user_session:30 - Shortened URL http://127.0.0.1:8000/uZQrNmI8NM8r saved in session for https://docs.djangoproject.com/en/3.2/ref/models/querysets/
+2021-07-09 12:38:47.406 | INFO     | shortener.services:add_urls_in_user_session:30 - Shortened URL http://127.0.0.1:8000/kWax7V1WyJf4 saved in session for https://docs.djangoproject.com/en/3.2/ref/models/querysets/
+2021-07-09 12:38:49.361 | INFO     | shortener.views:redirect_view:63 - URL with given unique code does not exist
+2021-07-09 12:40:20.963 | INFO     | shortener.services:add_urls_in_user_session:30 - Shortened URL http://127.0.0.1:8000/zu8Kl6SCBJiJ saved in session for https://docs.djangoproject.com/en/3.2/ref/models/querysets/
+2021-07-09 12:40:24.905 | INFO     | shortener.services:add_urls_in_user_session:30 - Shortened URL http://127.0.0.1:8000/WPn0a6abmRx8 saved in session for https://docs.djangoproject.com/en/3.2/ref/models/querysets/
+2021-07-09 12:40:27.445 | INFO     | shortener.services:add_urls_in_user_session:30 - Shortened URL http://127.0.0.1:8000/Z7kUiqpQfKyc saved in session for https://docs.djangoproject.com/en/3.2/ref/models/querysets/
+2021-07-09 12:40:55.751 | INFO     | shortener.services:add_urls_in_user_session:30 - Shortened URL http://127.0.0.1:8000/T2GAw9UkzxL6 saved in session for https://docs.djangoproject.com/en/3.2/ref/models/querysets/
+2021-07-09 13:00:39.930 | INFO     | shortener.views:shorten_url_view:45 - URL http://127.0.0.1:8000/ was successfully saved with code 9Sm5Pf9fhJKV
+2021-07-09 13:00:39.932 | INFO     | shortener.services:add_urls_in_user_session:30 - Shortened URL http://127.0.0.1:8000/9Sm5Pf9fhJKV saved in session for http://127.0.0.1:8000/
+2021-07-09 13:00:41.579 | INFO     | shortener.services:add_url_form_error_messages_to_message_storage:41 - Validation error in field "code"with message "Url with this Unique code already exists."
+2021-07-09 13:00:43.220 | INFO     | shortener.views:shorten_url_view:45 - URL http://127.0.0.1:8000/ was successfully saved with code YbNNAbBFkSVe
+2021-07-09 13:00:43.222 | INFO     | shortener.services:add_urls_in_user_session:30 - Shortened URL http://127.0.0.1:8000/YbNNAbBFkSVe saved in session for http://127.0.0.1:8000/
+2021-07-09 13:00:44.710 | INFO     | shortener.services:add_url_form_error_messages_to_message_storage:41 - Validation error in field "code"with message "Url with this Unique code already exists."
+2021-07-09 13:00:45.645 | INFO     | shortener.views:shorten_url_view:45 - URL http://127.0.0.1:8000/ was successfully saved with code T6aJCQXdNww1
+2021-07-09 13:00:45.646 | INFO     | shortener.services:add_urls_in_user_session:30 - Shortened URL http://127.0.0.1:8000/T6aJCQXdNww1 saved in session for http://127.0.0.1:8000/
+2021-07-09 13:00:46.937 | INFO     | shortener.services:add_url_form_error_messages_to_message_storage:41 - Validation error in field "code"with message "Url with this Unique code already exists."
+2021-07-09 13:00:48.273 | INFO     | shortener.views:shorten_url_view:45 - URL http://127.0.0.1:8000/ was successfully saved with code eZSvVvxEYWSJ
+2021-07-09 13:00:48.274 | INFO     | shortener.services:add_urls_in_user_session:30 - Shortened URL http://127.0.0.1:8000/eZSvVvxEYWSJ saved in session for http://127.0.0.1:8000/
+2021-07-09 13:00:49.563 | INFO     | shortener.services:add_url_form_error_messages_to_message_storage:41 - Validation error in field "code"with message "Url with this Unique code already exists."
+2021-07-09 13:00:50.483 | INFO     | shortener.views:shorten_url_view:45 - URL http://127.0.0.1:8000/ was successfully saved with code sxIJNCSRCRq7
+2021-07-09 13:00:50.486 | INFO     | shortener.services:add_urls_in_user_session:30 - Shortened URL http://127.0.0.1:8000/sxIJNCSRCRq7 saved in session for http://127.0.0.1:8000/
+2021-07-09 13:00:51.484 | INFO     | shortener.services:add_url_form_error_messages_to_message_storage:41 - Validation error in field "code"with message "Url with this Unique code already exists."
+2021-07-09 13:00:53.838 | INFO     | shortener.views:shorten_url_view:45 - URL http://127.0.0.1:8000/ was successfully saved with code xcfc8Fkx75rD
+2021-07-09 13:00:53.840 | INFO     | shortener.services:add_urls_in_user_session:30 - Shortened URL http://127.0.0.1:8000/xcfc8Fkx75rD saved in session for http://127.0.0.1:8000/
+2021-07-09 13:01:58.887 | INFO     | shortener.views:shorten_url_view:45 - URL https://github.com/ was successfully saved with code VJNkWt0PKo8q
+2021-07-09 13:01:58.889 | INFO     | shortener.services:add_urls_in_user_session:30 - Shortened URL http://127.0.0.1:8000/VJNkWt0PKo8q saved in session for https://github.com/
+2021-07-09 14:04:47.962 | INFO     | shortener.services:add_url_form_error_messages_to_message_storage:41 - Validation error in field "code"with message "Url with this Unique code already exists."
+2021-07-09 14:04:56.166 | INFO     | shortener.services:add_url_form_error_messages_to_message_storage:41 - Validation error in field "code"with message "Url with this Unique code already exists."
+2021-07-09 14:05:34.195 | INFO     | shortener.views:shorten_url_view:45 - URL http://127.0.0.1:8000/ was successfully saved with code 
+2021-07-09 14:05:34.197 | INFO     | shortener.services:add_urls_in_user_session:30 - Shortened URL http://127.0.0.1:8000/ saved in session for http://127.0.0.1:8000/
+2021-07-09 14:09:33.439 | INFO     | shortener.services:add_url_form_error_messages_to_message_storage:41 - Validation error in field "code"with message "Url with this Unique code already exists."
+2021-07-09 14:10:45.417 | INFO     | shortener.services:add_url_form_error_messages_to_message_storage:41 - Validation error in field "code"with message "Url with this Unique code already exists."
+2021-07-09 14:10:50.105 | INFO     | shortener.services:add_url_form_error_messages_to_message_storage:41 - Validation error in field "code"with message "Url with this Unique code already exists."
+2021-07-09 14:10:56.553 | INFO     | shortener.services:add_url_form_error_messages_to_message_storage:41 - Validation error in field "code"with message "Url with this Unique code already exists."
+2021-07-09 14:11:20.293 | DEBUG    | shortener.views:shorten_url_view:39 - <QueryDict: {'csrfmiddlewaretoken': ['nBj5n9kiYs0v9BcSLWCS8Yf3UDhslS7j9oHEeRwhh5ynPfatxFQ9zvHLTIq6gM2e'], 'original_url': ['http://127.0.0.1:8000/'], 'code': ['yQWrxzzYcUdI'], 'initial-code': ['yQWrxzzYcUdI'], 'make-it-shorter': ['Make it shorter']}>
+2021-07-09 14:11:20.350 | INFO     | shortener.views:shorten_url_view:48 - URL http://127.0.0.1:8000/ was successfully saved with code yQWrxzzYcUdI
+2021-07-09 14:11:20.351 | INFO     | shortener.services:add_urls_in_user_session:30 - Shortened URL http://127.0.0.1:8000/yQWrxzzYcUdI saved in session for http://127.0.0.1:8000/
+2021-07-09 14:12:00.270 | DEBUG    | shortener.views:shorten_url_view:39 - {'csrfmiddlewaretoken': ['WyoeVm88GV2X428i1E8pLLIAX55D3D9pIlMNM4k7ZyAPKG6TNnmGciaiWaehYx4k'], 'original_url': ['http://127.0.0.1:8000/'], 'code': [''], 'initial-code': ['dJ47cGlUsRpS'], 'make-it-shorter': ['Make it shorter']}
+2021-07-09 14:12:00.316 | INFO     | shortener.services:add_url_form_error_messages_to_message_storage:41 - Validation error in field "code"with message "Url with this Unique code already exists."
+2021-07-09 14:12:46.329 | DEBUG    | shortener.views:shorten_url_view:39 - Pwdq4St5bM2p
+2021-07-09 14:12:46.386 | INFO     | shortener.views:shorten_url_view:48 - URL http://127.0.0.1:8000/ was successfully saved with code Pwdq4St5bM2p
+2021-07-09 14:12:46.387 | INFO     | shortener.services:add_urls_in_user_session:30 - Shortened URL http://127.0.0.1:8000/Pwdq4St5bM2p saved in session for http://127.0.0.1:8000/
+2021-07-09 14:12:57.596 | DEBUG    | shortener.views:shorten_url_view:39 - 
+2021-07-09 14:12:57.599 | INFO     | shortener.services:add_url_form_error_messages_to_message_storage:41 - Validation error in field "code"with message "Url with this Unique code already exists."
+2021-07-09 14:13:02.852 | DEBUG    | shortener.views:shorten_url_view:39 - 
+2021-07-09 14:13:02.855 | INFO     | shortener.services:add_url_form_error_messages_to_message_storage:41 - Validation error in field "code"with message "Url with this Unique code already exists."
+2021-07-09 14:13:48.714 | INFO     | shortener.services:add_url_form_error_messages_to_message_storage:41 - Validation error in field "code"with message "Url with this Unique code already exists."
+2021-07-09 14:15:33.277 | INFO     | shortener.services:add_url_form_error_messages_to_message_storage:41 - Validation error in field "code"with message "Url with this Unique code already exists."
+2021-07-09 14:17:46.079 | DEBUG    | shortener.views:shorten_url_view:39 - {'original_url': <django.forms.fields.URLField object at 0x1049d8d60>, 'code': <django.forms.fields.CharField object at 0x1049d8160>}
+2021-07-09 14:17:46.134 | INFO     | shortener.services:add_url_form_error_messages_to_message_storage:41 - Validation error in field "code"with message "Url with this Unique code already exists."
+2021-07-09 14:18:12.879 | DEBUG    | shortener.views:shorten_url_view:39 - <QueryDict: {'csrfmiddlewaretoken': ['XKUD3TfkNgeahn6DGb1AJEVVYSYTnJAtJxicUBrj6TM2X14esUfRabnDXX7xiDvo'], 'original_url': ['http://127.0.0.1:8000/'], 'code': [''], 'initial-code': ['xahkrWqhdeyX'], 'make-it-shorter': ['Make it shorter']}>
+2021-07-09 14:18:12.939 | INFO     | shortener.services:add_url_form_error_messages_to_message_storage:41 - Validation error in field "code"with message "Url with this Unique code already exists."
+2021-07-09 14:18:38.077 | DEBUG    | shortener.views:shorten_url_view:39 - <QueryDict: {'csrfmiddlewaretoken': ['TuhNOHFcnyzyAUYPwOGH84B8uUHTenlXFhFmFpRbGb7qgyWqixUYzB3QtZQx9hgS'], 'original_url': ['http://127.0.0.1:8000/'], 'code': [''], 'initial-code': ['RoGI7pN3EKGn'], 'make-it-shorter': ['Make it shorter']}>
+2021-07-09 14:18:38.132 | INFO     | shortener.services:add_url_form_error_messages_to_message_storage:41 - Validation error in field "code"with message "Url with this Unique code already exists."
+2021-07-09 14:21:53.971 | DEBUG    | shortener.views:shorten_url_view:39 - <QueryDict: {'csrfmiddlewaretoken': ['CzK20lS0ns09Xk1ur7qHT88E9ROjbXzaom8BR34ZG5y1DYZ5dQEYkFAm8WXX6Ru5'], 'original_url': ['http://127.0.0.1:8000/'], 'code': [''], 'initial-code': ['YOone3q3tgYd'], 'make-it-shorter': ['Make it shorter']}>
+2021-07-09 14:21:54.027 | INFO     | shortener.services:add_url_form_error_messages_to_message_storage:41 - Validation error in field "code"with message "Url with this Unique code already exists."
+2021-07-09 14:26:33.825 | INFO     | shortener.views:shorten_url_view:45 - URL http://127.0.0.1:8000/ was successfully saved with code S0Unz0y21TS7
+2021-07-09 14:26:33.826 | INFO     | shortener.services:add_urls_in_user_session:30 - Shortened URL http://127.0.0.1:8000/S0Unz0y21TS7 saved in session for http://127.0.0.1:8000/
+2021-07-09 14:31:56.807 | INFO     | shortener.views:shorten_url_view:45 - URL http://127.0.0.1:8000/ was successfully saved with code Xw0rUKex6d8u
+2021-07-09 14:31:56.809 | INFO     | shortener.services:add_urls_in_user_session:30 - Shortened URL http://127.0.0.1:8000/Xw0rUKex6d8u saved in session for http://127.0.0.1:8000/
+2021-07-09 18:35:31.627 | INFO     | shortener.services:add_url_form_error_messages_to_message_storage:41 - Validation error in field "code"with message "Url with this Unique code already exists."

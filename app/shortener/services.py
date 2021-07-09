@@ -1,0 +1,45 @@
+from django.contrib import messages
+from django.http import HttpRequest
+from django.contrib.sessions.models import Session
+
+from loguru import logger
+
+from .forms import URLForm
+
+
+def build_shortened_url(request: HttpRequest, code: str) -> str:
+    """Собирает укороченный URL на основе абсолютного пути до
+    домашней страницы и идентификатора укороченного URL.code"""
+    return request.build_absolute_uri('/') + code
+
+
+def add_urls_in_user_session(
+        session: Session, original_url: str, shortened_url: str) -> None:
+    """Записывает в сессию оригинальный и укороченный URL"""
+    if (not 'user_urls' in session or 
+        not session['user_urls']):
+        session['user_urls'] = list()
+
+    user_urls = session['user_urls']
+    user_urls.append({
+        'original_url': original_url,
+        'shortened_url': shortened_url,
+    })
+    session['user_urls'] = user_urls
+
+    logger.info(
+        f'Shortened URL {shortened_url} saved in session for {original_url}'
+    )
+
+
+def add_url_form_error_messages_to_message_storage(
+        request: HttpRequest, form: URLForm) -> None:
+    """Записывает ошибки валидации из формы URLForm в
+    хранилище Django Messages"""
+    for field, message in form.errors.get_json_data().items():
+        cleaned_message = message[0]['message'] 
+        logger.info((
+            f'Validation error in field "{field}"'
+            f'with message "{cleaned_message}"'
+        ))
+        messages.error(request, cleaned_message)

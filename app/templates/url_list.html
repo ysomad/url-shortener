@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<h5 class="card-header">My shortened URLs</h5>
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">Original URL</th>
+				<th scope="col">Shortened URL</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for url in user_urls %}
+				<tr>
+					<td><a href="{{ url.shortened_url }}">{{ url.shortened_url }}</a></td>
+					<td><a href="{{ url.original_url }}">{{ url.original_url }}</a></td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock content %}
