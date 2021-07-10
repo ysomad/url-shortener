@@ -6,7 +6,7 @@ from loguru import logger
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-e&fi@)0pl_jyjx_9h@e(kj72zup6xu%$2!mb*k38^wq5v(4nd@'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 DEBUG = True
 
