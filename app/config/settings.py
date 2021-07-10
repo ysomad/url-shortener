@@ -23,6 +23,8 @@ INSTALLED_APPS = [
 
     'crispy_forms',
     'rest_framework',
+    'django_celery_results',
+    'django_celery_beat',
 
     'shortener',
     'api',
@@ -133,3 +135,12 @@ CACHES = {
         'KEY_PREFIX': 'cache'
     }
 }
+
+CELERY_TIMEZONE = TIME_ZONE
+CELERY_TASK_TRACK_STARTED = True
+CELERY_TASK_TIME_LIMIT = 30 * 60
+
+CELERY_BROKER_URL = REDIS_URL
+CELERY_RESULT_BACKEND = 'django-db'
+CELERY_CACHE_BACKEND = 'default'
+

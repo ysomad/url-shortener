@@ -16,7 +16,7 @@ services:
       - mysql_data:/var/lib/mysql
 
   redis:
-    container_name: redis
+    container_name: "redis"
     image: redis:alpine
 
   django:
@@ -35,6 +35,20 @@ services:
     depends_on: 
       - mysql
       - redis
+
+  celery:
+    container_name: "celery"
+    restart: always
+    build:
+      context: .
+      dockerfile: ./docker/dev/Dockerfile
+    command: celery -A config worker -l INFO
+    volumes: 
+      - ./app:/usr/src/app
+    env_file: 
+      - ./docker/dev/.env
+    depends_on: 
+      - django
 
 volumes: 
   mysql_data:
