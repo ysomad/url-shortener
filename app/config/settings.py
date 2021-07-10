@@ -119,3 +119,17 @@ logger.add(BASE_DIR / 'logs/shortener.log', level='DEBUG')
 REST_FRAMEWORK = {
     'DATETIME_FORMAT': "%Y-%m-%d %H:%M:%S",
 }
+
+
+REDIS_URL = os.environ.get('REDIS_URL')
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': REDIS_URL,
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient'
+        },
+        'KEY_PREFIX': 'cache'
+    }
+}
