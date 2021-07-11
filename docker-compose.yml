@@ -50,5 +50,19 @@ services:
     depends_on: 
       - django
 
+  celery_beat:
+    container_name: "celery_beat"
+    restart: always
+    build:
+      context: .
+      dockerfile: ./docker/dev/Dockerfile
+    command: celery -A config beat -l INFO
+    volumes: 
+      - ./app:/usr/src/app
+    env_file: 
+      - ./docker/dev/.env
+    depends_on: 
+      - django
+
 volumes: 
   mysql_data:
