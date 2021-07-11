@@ -16,12 +16,5 @@ class URLSerializer(ModelSerializer):
 		return build_shortened_url(request, obj.code)
 
 
-class URLWriteSerializer(ModelSerializer):
-	class Meta:
-		model = URL
-		fields = ('original_url', 'code')
-
-
-
 
 	
