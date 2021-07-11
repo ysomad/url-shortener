@@ -1,3 +1,4 @@
+
 from django.contrib import messages
 from django.http import HttpRequest
 from django.contrib.sessions.models import Session
@@ -46,16 +47,6 @@ def add_url_form_error_messages_to_message_storage(
             f'with message "{cleaned_message}"'
         ))
         messages.error(request, cleaned_message)
-
-
-def delete_all_urls_from_database() -> None:
-    """Удаляет все записи shortener.models.URL из базы данных"""
-    URL.objects.all().delete()
-
-
-def delete_all_urls_from_cache() -> None:
-    """Удаляет все записи из кэша"""
-    cache.clear()
 
 
 def add_url_mapping_to_cache(url_code: str, original_url: str) -> None:

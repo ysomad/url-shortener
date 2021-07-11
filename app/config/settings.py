@@ -8,9 +8,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
-DEBUG = True
+DEBUG = bool(int(os.environ.get('DEBUG', 1)))
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', default='*').split(',')
 
 
 INSTALLED_APPS = [
@@ -21,11 +21,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # Third party apps
     'crispy_forms',
     'rest_framework',
     'django_celery_results',
     'django_celery_beat',
 
+    # Local
     'shortener',
     'api',
 ]
@@ -97,7 +99,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 
@@ -136,6 +138,11 @@ CACHES = {
     }
 }
 
+# Сколько дней будут хранится URLы в базе данных
+URL_STORE_LIMIT_DAYS = 7
+
+
+# Celery
 CELERY_TIMEZONE = TIME_ZONE
 CELERY_TASK_TRACK_STARTED = True
 CELERY_TASK_TIME_LIMIT = 60 * 1
