@@ -1,11 +1,12 @@
+
 from django.contrib import messages
-from django.http import HttpRequest, HttpResponseRedirect, Http404
+from django.http import HttpRequest
 from django.contrib.sessions.models import Session
 from django.core.cache import cache
 
 from loguru import logger
 
-from config.settings import REDIS_TTL
+from config.settings import CELERY_TASK_TIME_LIMIT
 from .forms import URLForm
 from .models import URL
 
@@ -50,7 +51,7 @@ def add_url_form_error_messages_to_message_storage(
 
 def add_url_mapping_to_cache(url_code: str, original_url: str) -> None:
     """Добавляет ключ значение {"url_code": "original_url"} в кэш"""
-    cache.set(url_code, original_url, timeout=REDIS_TTL)
+    cache.set(url_code, original_url, timeout=CELERY_TASK_TIME_LIMIT)
     logger.info((
         f'{original_url} was successfully '
         f'saved in cache with code "{url_code}"'
@@ -72,4 +73,5 @@ def get_original_url_from_cache(url_code: str) -> str:
     
     logger.info(f'Found "{original_url}" with code "{url_code}" in cache')
     return original_url
+
 
