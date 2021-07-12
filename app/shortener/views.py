@@ -5,7 +5,6 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import redirect
 from django.views.decorators.http import require_GET, require_POST
 from django.http.response import Http404
-from django.http import HttpResponseRedirect
 
 from .models import URL
 from .forms import URLForm
