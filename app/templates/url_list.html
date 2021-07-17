@@ -10,7 +10,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			{% for url in user_urls %}
+			{% for url in session_urls %}
 				<tr>
 					<td><a href="{{ url.original_url }}">{{ url.original_url }}</a></td>
 					<td><a href="{{ url.shortened_url }}">{{ url.shortened_url }}</a></td>

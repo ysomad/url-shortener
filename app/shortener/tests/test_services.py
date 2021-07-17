@@ -1,7 +1,8 @@
 from django.test import TestCase
 from django.core.cache import cache
 
-from shortener.services import save_url_form_to_db, save_url_mapping_to_cache
+from shortener.services import (save_url_form_to_db, save_url_mapping_to_cache,
+	)
 from shortener.forms import URL, URLForm
 
 
@@ -30,4 +31,7 @@ class ShortenerServiceTestCase(TestCase):
 		save_url_mapping_to_cache(code, original_url)
 		cached_original_url = cache.get(code)
 		self.assertEqual(original_url, cached_original_url)	
+
+
+
 

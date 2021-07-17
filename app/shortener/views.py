@@ -1,11 +1,11 @@
-from django.db.models.query import QuerySet
 from django.urls import reverse_lazy
 from django.http.response import HttpResponse
 from django.views.generic import FormView, RedirectView, ListView 
 
 from .forms import URLForm
 from .services import (
-    save_url_form_to_db, save_url_mapping_to_cache
+    save_url_form_to_db, save_url_mapping_to_cache, 
+    get_urls_from_db_by_session_key, get_url_list_from_db_or_cache
 )
 
 
@@ -15,9 +15,9 @@ class URLFormView(FormView):
     success_url = reverse_lazy('url_list')
 
     def form_valid(self, form: URLForm) -> HttpResponse:
-        """Сохраняет инстанс модели URL из формы URLForm в БД и кэш,
-        если форма провалидирована без ошибок"""
-        url_code, original_url = save_url_form_to_db(
+        """Сохраняет инстанс модели URL из формы URLForm в БД и пару
+        URL код, оригинальный URL в кэш"""
+        original_url, url_code = save_url_form_to_db(
             self.request.session.session_key, form) 
         save_url_mapping_to_cache(url_code, original_url)
         return super().form_valid(form)
@@ -25,35 +25,14 @@ class URLFormView(FormView):
 
 class URLListView(ListView):
     template_name = 'url_list.html'
-    context_object_name = 'user_urls'
 
-    # def get_queryset(self) -> QuerySet:
-    #     return get_url_list_queryset_by_session_key(
-    #         self.request.session.session_key)
+    def get_queryset(self):
+        return get_urls_from_db_by_session_key(self.request.session.session_key)
 
-    # def get_context_data(self):
-    #     session_key = self.request.session.session_key
-
-    #     # Если в кэше пусто, берет из БД
-
-    #     url_list_queryset = self.get_queryset()
-
-    #     # Сбилдить укороченный URL для всех урлов в queryset
-    #     for url in url_list_queryset:
-    #         url.shortened_url = build_shortened_url(self.request, url.code)
-
-    #     add_url_list_queryset_to_cache(session_key, url_list_queryset)
-
-    #     context_object_name = self.get_context_object_name(url_list_queryset)
-    #     context = {
-    #         'paginator': None,
-    #         'page_obj': None,
-    #         'is_paginated': False,
-    #         'object_list': url_list_queryset
-    #     }
-    #     if context_object_name is not None:
-    #         context[context_object_name] = url_list_queryset
-    #     return super().get_context_data(**context)
+    def get_context_data(self):
+        """Передает контекст со списком URLов в шаблон"""
+        url_list = get_url_list_from_db_or_cache(self) 
+        return super().get_context_data(session_urls=url_list)
 
 
 class ShortenerView(RedirectView):

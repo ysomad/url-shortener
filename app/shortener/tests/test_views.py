@@ -34,3 +34,7 @@ class URLFormViewTestCase(TestCase):
 		self.assertEqual(url.original_url, f'http://{no_prefix_url}')
 		self.assertIsInstance(resp, HttpResponseRedirect)
 
+
+class URLListViewTestCase(TestCase):
+	pass
+
