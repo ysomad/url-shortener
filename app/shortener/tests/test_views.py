@@ -10,7 +10,7 @@ from shortener.services import append_url_to_list_in_cache
 
 class URLFormViewTestCase(TestCase):
 	def test_url_creation_without_code(self):
-		data = {'original_url': 'https://valid-url.com'}
+		data = {'original_url': 'https://valid-url-without-code.com'}
 		resp = self.client.post(path=reverse('url_new'), data=data)
 		url = URL.objects.get(original_url=data['original_url'])
 		self.assertEqual(resp.status_code, HTTPStatus.FOUND)
@@ -29,7 +29,7 @@ class URLFormViewTestCase(TestCase):
 		self.assertRedirects(resp, reverse('url_list'))
 
 	def test_url_creation_with_url_without_prefix(self):
-		no_prefix_url = 'invalid.url'
+		no_prefix_url = 'no-prefix.url'
 		data = {'original_url':  no_prefix_url, 'code': 'testCode'}
 		resp = self.client.post(path=reverse('url_new'), data=data)
 		url = URL.objects.get(code=data['code'])
@@ -44,7 +44,6 @@ class URLListViewTestCase(TestCase):
 		resp = self.client.get(path=reverse('url_list'))
 		self.assertEqual(resp.status_code, HTTPStatus.OK)
 		self.assertTemplateUsed(resp, 'url_list.html')
-		self.assertContains(resp, 'You did not shorten any URL yet')
 		self.assertQuerysetEqual(resp.context['session_urls'], [])
 
 	def test_with_urls_in_cache(self):
