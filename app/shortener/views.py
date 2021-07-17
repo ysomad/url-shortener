@@ -4,8 +4,9 @@ from django.views.generic import FormView, RedirectView, ListView
 
 from .forms import URLForm
 from .services import (
-    save_url_form_to_db, save_url_mapping_to_cache, 
-    get_urls_from_db_by_session_key, get_url_list_from_db_or_cache
+    save_url_instance_to_db, save_url_mapping_to_cache, 
+    get_urls_from_db_by_session_key, get_url_list_from_db_or_cache,
+    get_or_create_session, append_url_to_list_in_cache
 )
 
 
@@ -17,9 +18,10 @@ class URLFormView(FormView):
     def form_valid(self, form: URLForm) -> HttpResponse:
         """Сохраняет инстанс модели URL из формы URLForm в БД и пару
         URL код, оригинальный URL в кэш"""
-        original_url, url_code = save_url_form_to_db(
-            self.request.session.session_key, form) 
+        session_key = get_or_create_session(self.request.session)
+        original_url, url_code = save_url_instance_to_db(session_key, form) 
         save_url_mapping_to_cache(url_code, original_url)
+        append_url_to_list_in_cache(self.request, original_url, url_code)
         return super().form_valid(form)
 
 
