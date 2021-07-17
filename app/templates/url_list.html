@@ -12,11 +12,11 @@
 		<tbody>
 			{% for url in user_urls %}
 				<tr>
-					<td><a href="{{ url.shortened_url }}">{{ url.shortened_url }}</a></td>
 					<td><a href="{{ url.original_url }}">{{ url.original_url }}</a></td>
+					<td><a href="{{ url.shortened_url }}">{{ url.shortened_url }}</a></td>
 				</tr>
 			{% endfor %}
 		</tbody>
 	</table>
-	<a href="{% url 'home' %}" class="btn btn-primary">Back</a>
+	{% comment %} <a href="{% url 'home' %}" class="btn btn-primary">Back</a> {% endcomment %}
 {% endblock content %}
