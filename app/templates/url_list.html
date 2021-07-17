@@ -5,8 +5,10 @@
 	<table class="table">
 		<thead>
 			<tr>
-				<th scope="col">Original URL</th>
-				<th scope="col">Shortened URL</th>
+				{% if session_urls %}
+					<th scope="col">Original URL</th>
+					<th scope="col">Shortened URL</th>
+				{% endif %}
 			</tr>
 		</thead>
 		<tbody>
@@ -14,6 +16,12 @@
 				<tr>
 					<td><a href="{{ url.original_url }}">{{ url.original_url }}</a></td>
 					<td><a href="{{ url.shortened_url }}">{{ url.shortened_url }}</a></td>
+				</tr>
+			{% empty %}
+				<tr>
+					<td>&nbsp;</td>
+					<td style="text-align: center;">You did not shorten any URL yet</td>
+					<td>&nbsp;</td>
 				</tr>
 			{% endfor %}
 		</tbody>

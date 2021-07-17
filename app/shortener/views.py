@@ -1,3 +1,6 @@
+from typing import Any
+
+from django.db.models.query import QuerySet
 from django.urls import reverse_lazy
 from django.http.response import HttpResponse
 from django.views.generic import FormView, RedirectView, ListView 
@@ -28,10 +31,10 @@ class URLFormView(FormView):
 class URLListView(ListView):
     template_name = 'url_list.html'
 
-    def get_queryset(self):
+    def get_queryset(self) -> QuerySet:
         return get_urls_from_db_by_session_key(self.request.session.session_key)
 
-    def get_context_data(self):
+    def get_context_data(self) -> dict[str, Any]:
         """Передает контекст со списком URLов в шаблон"""
         url_list = get_url_list_from_db_or_cache(self) 
         return super().get_context_data(session_urls=url_list)

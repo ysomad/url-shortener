@@ -55,7 +55,7 @@ def save_url_list_to_cache(session_key: str, urls: list) -> None:
 
 
 def append_url_to_list_in_cache(
-        request: HttpRequest, original_url: str, code: str) -> None:
+        request: HttpRequest, original_url: str, url_code: str) -> None:
     """Добавляет укороченный и оригинальный URL в массив в кэше с
     ключом session_key"""
     session_key = request.session.session_key
@@ -67,10 +67,9 @@ def append_url_to_list_in_cache(
 
     urls.append({
         'original_url': original_url,
-        'shortened_url': build_shortened_url(request, code)
+        'shortened_url': build_shortened_url(request, url_code)
     })
 
-    logger.error(urls)
     save_url_list_to_cache(session_key, urls)
 
 
