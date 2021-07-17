@@ -1,3 +1,4 @@
+from typing import Union
 from django.db.models.query import QuerySet
 
 from django.http import HttpRequest
@@ -36,7 +37,7 @@ def save_url_form_to_db(session_key: str, form: URLForm) -> tuple[str]:
 def get_url_list_from_cache(session_key: str) -> list[str]:
     """Возвращает лист URLов из кэша по ключу session_key"""
     url_list = cache.get(session_key)
-    if url_list is None:
+    if not url_list:
         raise ValueError('Got empty URL list from cache')
     logger.info(f'Got session URL list from cache {url_list}')
     return url_list
@@ -44,6 +45,8 @@ def get_url_list_from_cache(session_key: str) -> list[str]:
 
 def save_url_list_to_cache(session_key: str, urls: list) -> None:
     """Сохраняет URL массив в кэш с ключом session_key"""
+    if not urls:
+        raise ValueError('Cannot set NoneType URL list to cache')
     cache.set(session_key, urls, timeout=CACHE_TTL)
     logger.info(f'Added session URL list to cache {urls}')
 
@@ -109,18 +112,29 @@ def build_shortened_urls_in_url_list(request:HttpRequest, urls: list) -> list:
     return url_list_with_shortened_urls
 
 
-def get_url_list_from_db_or_cache(url_list_view: ListView) -> list:
-    """Возвращает список оригинальных и укороченных URLов из кэша
-    или БД, записывает в кэш если в кэше пусто"""
+def get_url_list_from_db_or_cache(
+        url_list_view: ListView) -> Union[list, QuerySet]:
+    """Возвращает список оригинальных и укороченных URLов из кэша,
+    если их там нет, берет из БД и записывает в КЭШ"""
     session_key = url_list_view.request.session.session_key
+
     try:
+        # Берет список с оригинальными и укороченными URLами из кэша
         url_list = get_url_list_from_cache(session_key)
+        return url_list
     except ValueError:
+        # Берет из БД
         url_list_queryset = url_list_view.get_queryset()
-        url_list = build_shortened_urls_in_url_list(
-            url_list_view.request,
-            list(url_list_queryset.values_list('original_url', 'code'))
-        )
-        save_url_list_to_cache(session_key, url_list)
-    return url_list
+
+        if url_list_queryset.exists():
+            url_list = build_shortened_urls_in_url_list(
+                url_list_view.request,
+                list(url_list_queryset.values_list('original_url', 'code'))
+            )
+            save_url_list_to_cache(session_key, url_list)
+            return url_list
+
+        logger.info('No URLs found in current session')
+        return url_list_queryset
+
 
