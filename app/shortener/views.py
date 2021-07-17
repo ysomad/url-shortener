@@ -35,44 +35,8 @@ class URLListView(ListView):
         return super().get_context_data(session_urls=url_list)
 
 
-class ShortenerView(RedirectView):
+class URLRedirectView(RedirectView):
     pass
-
-
-# @require_GET
-# def url_list_view(request):
-#     """Представление для отображения списка URLов 
-#     текущей сессии пользователя"""
-#     try:
-#         context = {'user_urls': request.session['user_urls']}
-#         return render(request, 'url_list.html', context=context)
-#     except KeyError:
-#         logger.info('No shortened URLs found in current user session')
-#         return render(request, 'url_list.html')
-
-
-# @require_POST
-# def shorten_url_view(request):
-#     """Представление процесса сокращения URLов"""
-#     form = URLForm(request.POST)
-
-#     if form.is_valid():
-#         form.save()
-
-#         original_url = form.cleaned_data['original_url']
-#         url_code = form.cleaned_data['code']
-#         shortened_url = build_shortened_url(request, url_code)
-
-#         logger.info(
-#             f'{original_url} was successfully saved with code "{url_code}"'
-#         )
-
-#         add_urls_in_user_session(request.session, original_url, shortened_url)
-#         add_url_mapping_to_cache(url_code, original_url)
-#         return redirect('url_list') 
-
-#     add_url_form_error_messages_to_message_storage(request, form) 
-#     return redirect('home')
 
 
 # @require_GET
