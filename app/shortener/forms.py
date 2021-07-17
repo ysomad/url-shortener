@@ -14,8 +14,8 @@ class URLForm(ModelForm):
 
         self.helper = FormHelper(self)
         self.helper.layout.append(Submit('Make it shorter', 'Make it shorter'))
-        # url_list_path = reverse('url_list')
-        # self.helper.layout.append(HTML(f'<a href="{url_list_path}" class="btn btn-secondary">My URL list</a>'))
+        url_list_path = reverse('url_list')
+        self.helper.layout.append(HTML(f'<a href="{url_list_path}" class="btn btn-secondary">My URL list</a>'))
 			
     class Meta:
         model = URL

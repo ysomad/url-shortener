@@ -5,6 +5,7 @@ from django.db.models.query import QuerySet
 
 from django.http import HttpRequest
 from django.core.cache import cache
+from django.http.response import Http404
 from django.views.generic.list import ListView
 
 from loguru import logger
@@ -162,6 +163,26 @@ def get_url_list_from_db_or_cache(
         return get_url_list_from_cache(url_list_view.request.session.session_key)
     except ValueError:
         return get_url_list_from_db_and_save_to_cache(url_list_view)
-        
+
+
+def get_original_url_from_cache_or_db(url_code: str) -> str: 
+    """Возвращает оригинальный URL из кэша или БД,
+    если в кэше нет, берет из БД и сохраняет в кэш"""
+    try:
+        original_url = get_original_url_from_cache(url_code)
+        logger.info((
+            f'Opening original URL "{original_url}" '
+            f'with code "{url_code}" from cache'
+        ))
+    except ValueError:
+        try:
+            original_url = get_original_url_from_db(url_code)
+            save_url_mapping_to_cache(url_code, original_url)
+        except URL.DoesNotExist:
+            original_url = ''
+            logger.info(f'Original URL with code "{url_code}" does not exist')
+    
+    return original_url
+    
 
 

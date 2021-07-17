@@ -3,21 +3,10 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-
 	<h5 class="card-header">URL shortener</h5>
 	<div class="card-body">
 		{% crispy form %}
 	</div>
-
-	<!-- Отображение ошибок валидации -->
-	{% if messages %}
-		<div class="card-footer">
-			{% for msg in messages %}
-				<div class="alert alert-danger" role="alert">{{ msg }}</div>
-			{% endfor %}
-		</div>
-	{% endif %}
-
 {% endblock content %}
 
 	

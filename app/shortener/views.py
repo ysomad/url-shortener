@@ -1,15 +1,16 @@
-from typing import Any
+from typing import Any, Optional
 
 from django.db.models.query import QuerySet
 from django.urls import reverse_lazy
 from django.http.response import HttpResponse
-from django.views.generic import FormView, RedirectView, ListView 
+from django.views.generic import FormView, RedirectView, ListView
 
 from .forms import URLForm
 from .services import (
-    save_url_instance_to_db, save_url_mapping_to_cache, 
-    get_urls_from_db_by_session_key, get_url_list_from_db_or_cache,
-    get_or_create_session, append_url_to_list_in_cache
+    get_original_url_from_cache_or_db, save_url_instance_to_db, 
+    save_url_mapping_to_cache, get_urls_from_db_by_session_key, 
+    get_url_list_from_db_or_cache, get_or_create_session, 
+    append_url_to_list_in_cache
 )
 
 
@@ -41,26 +42,6 @@ class URLListView(ListView):
 
 
 class URLRedirectView(RedirectView):
-    pass
-
-
-# @require_GET
-# def redirect_view(request, code):
-#     """Редиректит на оригинальный URL из кэша, либо из БД, если в кэше
-#     не найдено"""
-#     try:
-#         original_url_cached = get_original_url_from_cache(code)
-#         logger.info((
-#             f'Opening "{original_url_cached}" '
-#             f'with code "{code}" from cache'
-#         ))
-#         return HttpResponseRedirect(original_url_cached)
-#     except ValueError:
-#         try:
-#             original_url = get_original_url_from_db(code)
-#             add_url_mapping_to_cache(code, original_url)
-#             logger.info(f'Opening {original_url} with code "{code}" from db')
-#             return HttpResponseRedirect(original_url)
-#         except URL.DoesNotExist:
-#             logger.info(f'URL with code "{code}" does not exist')
-#             raise Http404 
+    def get_redirect_url(self, code) -> Optional[str]:
+        """Возвращает URL, на который будет перенаправлен пользователь"""
+        return get_original_url_from_cache_or_db(code)
