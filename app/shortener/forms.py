@@ -13,7 +13,6 @@ class URLForm(ModelForm):
         super(URLForm, self).__init__(*args, **kwargs)
 
         self.helper = FormHelper(self)
-        self.helper.form_action = reverse('url_shorten')
         self.helper.layout.append(Submit('Make it shorter', 'Make it shorter'))
         url_list_path = reverse('url_list')
         self.helper.layout.append(HTML(f'<a href="{url_list_path}" class="btn btn-secondary">My URL list</a>'))

@@ -6,7 +6,7 @@ from loguru import logger
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY', 'key')
 
 DEBUG = bool(int(os.environ.get('DEBUG', 1)))
 
@@ -70,10 +70,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': os.environ.get('MYSQL_DATABASE'),
-        'USER': os.environ.get('MYSQL_USER'),
-        'PASSWORD': os.environ.get('MYSQL_PASSWORD'),
+        'PASSWORD': os.environ.get('MYSQL_ROOT_PASSWORD'),
         'HOST': os.environ.get('MYSQL_HOST'), 
-        'PORT': 3306
+        'PORT': os.environ.get('MYSQL_PORT')
     }
 }
 
@@ -138,10 +137,8 @@ CACHES = {
     }
 }
 
-# Сколько дней будут хранится URLы в базе данных
-URL_STORE_LIMIT_DAYS = 7
-
-REDIS_TTL = 60 # 60 секунд
+URL_STORE_LIMIT_DAYS = 7 # дней
+URL_COUNTER_PREFIX = 'counter'
 
 # Celery
 CELERY_TIMEZONE = TIME_ZONE

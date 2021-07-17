@@ -6,7 +6,7 @@ from .models import URL
 
 @admin.register(URL)
 class URLAdmin(admin.ModelAdmin):
-	list_display = ('truncated_original_url', 'code', 'created_at')
+	list_display = ('truncated_original_url', 'code', 'session', 'created_at')
 
 	def truncated_original_url(self, url_object):
 		"""Обрезает оригинальный URL до 50 символов,

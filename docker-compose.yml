@@ -31,7 +31,7 @@ services:
       - ./app:/usr/src/app
     env_file:
       - ./docker/dev/.env
-    restart: always
+    restart: on-failure
     depends_on: 
       - mysql
       - redis
