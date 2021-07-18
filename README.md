@@ -1,14 +1,19 @@
-# url-shortener
+# URL shortener
+
+- URLs binds to current session
+- URL redirects not limited by session
 
 ## Usage
 1. Create and fill `.env` file in `docker/dev/` directory
 2. Build docker image
 ```bash
-$ docker-compose up --build -d
+$ docker-compose build
 ```
-3. Migrate and createsuperuser
+3. Run docker containers
 ```bash
-$ docker exec -ti django sh
-$ python manage.py migrate
-$ python manage.py createsuperuser
+$ docker-compose up -d
+```
+4. Run tests
+```bash
+$ docker exec -ti django python manage.py test .
 ```
