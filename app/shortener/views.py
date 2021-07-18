@@ -12,9 +12,10 @@ from .services import (
     get_url_list_from_db_or_cache, get_or_create_session, 
     append_url_to_list_in_cache
 )
+from .decorators import ExceptionHandlerMixin
 
 
-class URLFormView(FormView):
+class URLFormView(FormView, ExceptionHandlerMixin):
     template_name = 'url_new.html'
     form_class = URLForm
     success_url = reverse_lazy('url_list')
@@ -29,7 +30,7 @@ class URLFormView(FormView):
         return super().form_valid(form)
 
 
-class URLListView(ListView):
+class URLListView(ListView, ExceptionHandlerMixin):
     template_name = 'url_list.html'
 
     def get_queryset(self) -> QuerySet:
@@ -37,11 +38,11 @@ class URLListView(ListView):
 
     def get_context_data(self) -> dict[str, Any]:
         """Передает контекст со списком URLов в шаблон"""
-        url_list = get_url_list_from_db_or_cache(self) 
+        url_list = get_url_list_from_db_or_cache(self)
         return super().get_context_data(session_urls=url_list)
 
 
-class URLRedirectView(RedirectView):
+class URLRedirectView(RedirectView, ExceptionHandlerMixin):
     def get_redirect_url(self, code) -> Optional[str]:
         """Возвращает URL, на который будет перенаправлен пользователь"""
         return get_original_url_from_cache_or_db(code)

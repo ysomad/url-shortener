@@ -11,6 +11,7 @@ class ShortenerServiceTestCase(TestCase):
 	def setUp(self):
 		self.req = self.client.get('url_new').wsgi_request
 		self.host = self.req.build_absolute_uri('/')
+		self.cache_ttl = 30 # seconds
 
 	def test_save_url_form_to_db_service_without_url_code(self):
 		data = {'original_url': 'http://test-url.com'}
@@ -77,7 +78,7 @@ class ShortenerServiceTestCase(TestCase):
 				'shortened_url': 'http://localhost:8000/shU2'
 			}
 		]
-		cache.set(session_key, url_list)
+		cache.set(session_key, url_list, timeout=self.cache_ttl)
 		url_list_from_cache = S.get_url_list_from_cache(session_key)
 		self.assertIsNotNone(url_list_from_cache)
 		self.assertIsInstance(url_list_from_cache, list)
@@ -99,7 +100,7 @@ class ShortenerServiceTestCase(TestCase):
 		shortened_url = self.host + code
 		cache.set(session_key, [
 			{'original_url': original_url, 'shortened_url': shortened_url}
-		])
+		], timeout=self.cache_ttl)
 		S.append_url_to_list_in_cache(req, original_url, code)
 		url_list_from_cache = cache.get(session_key)
 		self.assertNotEqual(session_key, self.client.session.session_key)
@@ -115,7 +116,7 @@ class ShortenerServiceTestCase(TestCase):
 		code = 'urlCode1337cache'
 		shortened_url = self.host + code
 		url_dict = {'original_url': original_url, 'shortened_url': shortened_url}
-		cache.set(session_key, [url_dict])
+		cache.set(session_key, [url_dict], timeout=self.cache_ttl)
 		url_list_from_cache = S.get_url_list_from_cache(session_key)
 		self.assertNotEqual(session_key, self.client.session.session_key)
 		self.assertIsInstance(url_list_from_cache, list)
@@ -134,27 +135,27 @@ class ShortenerServiceTestCase(TestCase):
 
 	def test_build_shortened_urls_in_url_list(self):
 		url_list = [
-			('http://orig-url.com', 'code1'),
-			('http://orig-url2.com', 'code2')
+			{'original_url': 'http://orig-url.com', 'code': 'code1'},
+			{'original_url': 'http://orig-url1.com', 'code': 'code2'},
 		]
 		url_list_with_shortened_urls = S.build_shortened_urls_in_url_list(
 			self.req, url_list)
 		self.assertIsInstance(url_list_with_shortened_urls, list)
 		self.assertEqual(
 			url_list_with_shortened_urls[0]['original_url'], 
-			url_list[0][0]
+			url_list[0]['original_url']
 		)
 		self.assertEqual(
 			url_list_with_shortened_urls[1]['original_url'], 
-			url_list[1][0]
+			url_list[1]['original_url']
 		)
 		self.assertEqual(
 			url_list_with_shortened_urls[0]['shortened_url'],
-			self.host + url_list[0][1]
+			self.host + url_list[0]['code']
 		)
 		self.assertEqual(
 			url_list_with_shortened_urls[1]['shortened_url'],
-			self.host + url_list[1][1]
+			self.host + url_list[1]['code']
 		)
 
 	def test_build_shortened_urls_in_url_list_raising_typeerror(self):
