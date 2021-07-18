@@ -10,6 +10,7 @@ from django.views.generic.list import ListView
 
 from loguru import logger
 
+from config.settings import CACHE_TTL
 from .forms import URLForm
 from .models import URL
 
@@ -51,7 +52,7 @@ def save_url_list_to_cache(session_key: str, urls: list) -> None:
     """Сохраняет URL массив в кэш с ключом session_key"""
     if not urls:
         raise ValueError('Cannot set NoneType URL list to cache')
-    cache.set(session_key, urls)
+    cache.set(session_key, urls, timeout=CACHE_TTL)
     logger.info(f'Session URL list {urls} saved in cache')
 
 
@@ -82,7 +83,7 @@ def build_shortened_url(request: HttpRequest, code: str) -> str:
 
 def save_url_mapping_to_cache(url_code: str, original_url: str) -> None:
     """Сохраняет оригинальный URL с ключом url_code в кэше"""
-    cache.set(url_code, original_url)
+    cache.set(url_code, original_url, timeout=CACHE_TTL)
     logger.info(
         f'Original URL "{original_url}" with code "{url_code}" saved in cache')
 

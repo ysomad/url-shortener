@@ -138,6 +138,7 @@ CACHES = {
 }
 
 URL_STORE_LIMIT_DAYS = 7 # дней
+CACHE_TTL = 60 # секунд
 
 # Celery
 CELERY_TIMEZONE = TIME_ZONE

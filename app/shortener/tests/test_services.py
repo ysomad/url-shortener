@@ -11,6 +11,7 @@ class ShortenerServiceTestCase(TestCase):
 	def setUp(self):
 		self.req = self.client.get('url_new').wsgi_request
 		self.host = self.req.build_absolute_uri('/')
+		self.cache_ttl = 30 # seconds
 
 	def test_save_url_form_to_db_service_without_url_code(self):
 		data = {'original_url': 'http://test-url.com'}
@@ -77,7 +78,7 @@ class ShortenerServiceTestCase(TestCase):
 				'shortened_url': 'http://localhost:8000/shU2'
 			}
 		]
-		cache.set(session_key, url_list)
+		cache.set(session_key, url_list, timeout=self.cache_ttl)
 		url_list_from_cache = S.get_url_list_from_cache(session_key)
 		self.assertIsNotNone(url_list_from_cache)
 		self.assertIsInstance(url_list_from_cache, list)
@@ -99,7 +100,7 @@ class ShortenerServiceTestCase(TestCase):
 		shortened_url = self.host + code
 		cache.set(session_key, [
 			{'original_url': original_url, 'shortened_url': shortened_url}
-		])
+		], timeout=self.cache_ttl)
 		S.append_url_to_list_in_cache(req, original_url, code)
 		url_list_from_cache = cache.get(session_key)
 		self.assertNotEqual(session_key, self.client.session.session_key)
@@ -115,7 +116,7 @@ class ShortenerServiceTestCase(TestCase):
 		code = 'urlCode1337cache'
 		shortened_url = self.host + code
 		url_dict = {'original_url': original_url, 'shortened_url': shortened_url}
-		cache.set(session_key, [url_dict])
+		cache.set(session_key, [url_dict], timeout=self.cache_ttl)
 		url_list_from_cache = S.get_url_list_from_cache(session_key)
 		self.assertNotEqual(session_key, self.client.session.session_key)
 		self.assertIsInstance(url_list_from_cache, list)
