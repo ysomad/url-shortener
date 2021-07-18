@@ -111,9 +111,13 @@ def get_original_url_from_cache(url_code: str) -> str:
 
 
 def build_shortened_urls_in_url_list(request:HttpRequest, urls: list) -> list:
-    """Получает лист с оригинальными URLами и их кодами.
+    """Получает лист кортежей с оригинальными URLами и их кодами.
     Возвращает лист словарей с оригинальными и укороченными URLами"""
     url_list_with_shortened_urls = list()
+
+    # raise TypeError if urls is not list of tuples
+    if not all(isinstance(instance, tuple) for instance in urls):
+        raise TypeError('URL list must be list of tuples')
 
     for instance in urls:
         url_dict = {
