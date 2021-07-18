@@ -9,7 +9,7 @@ from shortener.models import URL
 from shortener.services import append_url_to_list_in_cache
 
 
-class TestView(TestCase):
+class ViewTest(TestCase):
 
 	def setUp(self):
 		self.url_new = reverse('url_new')
@@ -48,12 +48,6 @@ class TestView(TestCase):
 		self.assertEqual(url.original_url, f'http://{no_prefix_url}')
 		self.assertIsInstance(resp, HttpResponseRedirect)
 		self.assertRedirects(resp, self.url_list)
-
-	def test_no_urls_in_db_and_cache(self):
-		resp = self.client.get(self.url_list)
-		self.assertEqual(resp.status_code, HTTPStatus.OK)
-		self.assertTemplateUsed(resp, 'url_list.html')
-		self.assertQuerysetEqual(resp.context['session_urls'], [])
 
 	def test_with_urls_in_cache(self):
 		cli = Client()
