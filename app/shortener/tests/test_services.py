@@ -1,13 +1,12 @@
 from django.test import TestCase
 from django.core.cache import cache
 
-from django.urls import reverse
-
 from shortener import services as S
 from shortener.forms import URL, URLForm
 
 
 class ShortenerServiceTestCase(TestCase):
+
 	def test_save_url_form_to_db_service_without_url_code(self):
 		data = {'original_url': 'http://test-url.com'}
 		form = URLForm(data)
