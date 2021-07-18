@@ -5,8 +5,6 @@ from django.db.models.query import QuerySet
 
 from django.http import HttpRequest
 from django.core.cache import cache
-from django.http.response import Http404
-from django.views.generic.list import ListView
 
 from loguru import logger
 
@@ -111,19 +109,20 @@ def get_original_url_from_cache(url_code: str) -> str:
     return original_url
 
 
-def build_shortened_urls_in_url_list(request:HttpRequest, urls: list) -> list:
+def build_shortened_urls_in_url_list(
+        request:HttpRequest, urls: list[dict[str, str]]) -> list[dict[str, str]]:
     """Получает лист кортежей с оригинальными URLами и их кодами.
     Возвращает лист словарей с оригинальными и укороченными URLами"""
     url_list_with_shortened_urls = list()
 
     # raise TypeError if urls is not list of tuples
-    if not all(isinstance(instance, tuple) for instance in urls):
-        raise TypeError('URL list must be list of tuples')
+    if not all(isinstance(instance, dict) for instance in urls):
+        raise TypeError('URL list must be list of dictionaries')
 
     for instance in urls:
         url_dict = {
-            'original_url': instance[0],
-            'shortened_url': build_shortened_url(request, instance[1])
+            'original_url': instance['original_url'],
+            'shortened_url': build_shortened_url(request, instance['code'])
         }
         url_list_with_shortened_urls.append(url_dict)
     
@@ -131,7 +130,7 @@ def build_shortened_urls_in_url_list(request:HttpRequest, urls: list) -> list:
     return url_list_with_shortened_urls
 
 
-def get_url_list_from_cache(session_key: str) -> list[str]:
+def get_url_list_from_cache(session_key: str) -> list[dict[str, str]]:
     """Возвращает лист URLов из кэша по ключу session_key"""
     url_list = cache.get(session_key)
     if not url_list:
@@ -140,34 +139,26 @@ def get_url_list_from_cache(session_key: str) -> list[str]:
     return url_list
 
 
-def get_url_list_from_db_and_save_to_cache(
-        url_list_view: ListView) -> Union[list[str], QuerySet]:
-    """Берет QuerySet URLов из БД и если он не пуст, 
-    то добавляет его в кэш как лист.
-    Возвращает лист URLов или пустой QuerySet"""
-    url_list_queryset = url_list_view.get_queryset()
+def get_url_list_from_db_or_cache(
+        url_viewset: QuerySet) -> Union[list[str], QuerySet]:
+    """Берет список URLов из кэша или из БД"""
+    session_key = url_viewset.request.session.session_key
 
-    if url_list_queryset.exists():
-            url_list = build_shortened_urls_in_url_list(
-                url_list_view.request,
-                list(url_list_queryset.values_list('original_url', 'code'))
-            )
-            save_url_list_to_cache(
-                url_list_view.request.session.session_key, url_list
-            )
-            return url_list
+    try:
+        return get_url_list_from_cache(session_key)
+    except ValueError:
+        url_queryset = url_viewset.get_queryset()
+
+        if url_queryset.exists():
+            url_list = list(url_queryset.values('original_url', 'code'))
+            processed_url_list = build_shortened_urls_in_url_list(
+                url_viewset.request, url_list) 
+            save_url_list_to_cache(session_key, processed_url_list)
+
+            return processed_url_list
 
     logger.info('No URLs found in current session')
-    return url_list_queryset
-
-
-def get_url_list_from_db_or_cache(
-        url_list_view: ListView) -> Union[list[str], QuerySet]:
-    """Берет список URLов из кэша или из БД"""
-    try:
-        return get_url_list_from_cache(url_list_view.request.session.session_key)
-    except ValueError:
-        return get_url_list_from_db_and_save_to_cache(url_list_view)
+    return url_queryset
 
 
 def get_original_url_from_cache_or_db(url_code: str) -> str: 

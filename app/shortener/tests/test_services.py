@@ -135,27 +135,27 @@ class ShortenerServiceTestCase(TestCase):
 
 	def test_build_shortened_urls_in_url_list(self):
 		url_list = [
-			('http://orig-url.com', 'code1'),
-			('http://orig-url2.com', 'code2')
+			{'original_url': 'http://orig-url.com', 'code': 'code1'},
+			{'original_url': 'http://orig-url1.com', 'code': 'code2'},
 		]
 		url_list_with_shortened_urls = S.build_shortened_urls_in_url_list(
 			self.req, url_list)
 		self.assertIsInstance(url_list_with_shortened_urls, list)
 		self.assertEqual(
 			url_list_with_shortened_urls[0]['original_url'], 
-			url_list[0][0]
+			url_list[0]['original_url']
 		)
 		self.assertEqual(
 			url_list_with_shortened_urls[1]['original_url'], 
-			url_list[1][0]
+			url_list[1]['original_url']
 		)
 		self.assertEqual(
 			url_list_with_shortened_urls[0]['shortened_url'],
-			self.host + url_list[0][1]
+			self.host + url_list[0]['code']
 		)
 		self.assertEqual(
 			url_list_with_shortened_urls[1]['shortened_url'],
-			self.host + url_list[1][1]
+			self.host + url_list[1]['code']
 		)
 
 	def test_build_shortened_urls_in_url_list_raising_typeerror(self):

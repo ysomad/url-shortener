@@ -4,7 +4,7 @@ from .views import URLListCreateViewSet
 
 
 router = DefaultRouter()
-router.register(r'', URLListCreateViewSet)
+router.register(r'', URLListCreateViewSet, basename='url_list_create')
 
 urlpatterns = router.urls
 

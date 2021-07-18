@@ -38,7 +38,7 @@ class URLListView(ListView, ExceptionHandlerMixin):
 
     def get_context_data(self) -> dict[str, Any]:
         """Передает контекст со списком URLов в шаблон"""
-        url_list = get_url_list_from_db_or_cache(self) 
+        url_list = get_url_list_from_db_or_cache(self)
         return super().get_context_data(session_urls=url_list)
 
 
