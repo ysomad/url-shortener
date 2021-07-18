@@ -138,7 +138,6 @@ CACHES = {
 }
 
 URL_STORE_LIMIT_DAYS = 7 # дней
-URL_COUNTER_PREFIX = 'counter'
 
 # Celery
 CELERY_TIMEZONE = TIME_ZONE
