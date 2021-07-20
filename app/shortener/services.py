@@ -115,7 +115,6 @@ def build_shortened_urls_in_url_list(
     Возвращает лист словарей с оригинальными и укороченными URLами"""
     url_list_with_shortened_urls = list()
 
-    # raise TypeError if urls is not list of tuples
     if not all(isinstance(instance, dict) for instance in urls):
         raise TypeError('URL list must be list of dictionaries')
 
